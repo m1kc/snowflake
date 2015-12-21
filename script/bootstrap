@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e
+
+for i in $(cat *.go | grep 'github.com/' | cut -d'"' -f2); do
+	echo "-> $i"
+	GOPATH="`pwd`" go get -v "$i"
+done
+
+echo ">> All done."
